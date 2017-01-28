@@ -1,5 +1,5 @@
 
-var Block = function(x, y, height, width)
+var Block = function(x, y, height, width, status)
 {
 	this.x = x;
 	this.y = y;
