@@ -1,10 +1,10 @@
 
-var Block = function(x, y, height, width, status)
+var Block = function(x, y, height, width)
 {
 	this.x = x;
 	this.y = y;
 	this.height = height;
 	this.width = width;
-	this.status = status;
+	this.status = true;
 
 };
