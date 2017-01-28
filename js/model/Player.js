@@ -12,7 +12,6 @@ var Player = function(x, y, height, width, speed)
 		{
 			
 			this.x -= this.speed;
-			console.log("chamou");
 		}
 
 		else if(39 in keyboard && this.x + this.width < canvas.width)
@@ -24,7 +23,7 @@ var Player = function(x, y, height, width, speed)
 		{
 
 		}	
-	}
+	};
 
 };
 
