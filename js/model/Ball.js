@@ -8,5 +8,6 @@ var Ball = function (x, y, height, width, speed) {
 	this.speed = speed;
 	this.dirx = -1;
 	this.diry = 1;
-	this.mod = 0;	
+	this.mod = 0;
 };
+
