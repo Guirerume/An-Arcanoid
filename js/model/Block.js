@@ -5,6 +5,6 @@ var Block = function(x, y, height, width, status)
 	this.y = y;
 	this.height = height;
 	this.width = width;
-	this.status = status;
+	this.status = true;
 
 };
