@@ -36,8 +36,10 @@ function play(){
 	}else if(!pause){
 		var update = ball.moviment(player);
 		var updatePlayer = player.movement(keyboard);
+		ball.blockColision(block);
 		drawBall(ball, "#00ff00");
 		drawPlayer(player, "blue");
+		drawBlock(block, "red");
 		startBall(keyboard);
 		if(!update){
 			setTimeout(play, 7);
@@ -45,6 +47,7 @@ function play(){
 	}else if(pause){
 		drawBall(ball, "#00ff00");
 		drawPlayer(player, "blue");
+		drawBlock(block, "red");
 		startBall(keyboard);
 		setTimeout(play, 7);		
 	}
