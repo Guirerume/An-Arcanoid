@@ -12,13 +12,13 @@ var drawPlayer = function (player, color)
 
 };
 
-var drawBlock = function (block_Array, color)
+var drawBlock = function (block_array, color)
 {	
-	for(var i in block_array){
-		if(i.status)
-		{
+	for(var i = 0; i < block_array.length; i++){
+		if(block_array[i].status)
+		{			
 			ctx.fillStyle = color;
-			ctx.fillRect(block.x, block.y, block.width, block.height);
+			ctx.fillRect(block_array[i].x, block_array[i].y, block_array[i].width, block_array[i].height);
 		}
 	}
 	
