@@ -3,7 +3,7 @@ var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext("2d");
 var ball = new Ball(canvas.width / 2 - 15, canvas.height - 60, 30, 30, 1);
 var player = new Player(canvas.width /2 - 50, 370, 20, 100, 5);
-var block = new Block(canvas.width / 2 - 10, canvas.height / 2 - 40, 20, 30);
+var blocks = new Array();
 var start = false;
 var pause = false;
 
@@ -22,16 +22,34 @@ var startBall = function(keyboard) {
 	}
 };
 
-function play(){
-	ctx.clearRect(0, 0, canvas.width, canvas.height);
+function generateBlocks(){
+	var insertX = 0;
+	var insertY = canvas.height / 2 - 40;
+	
+	for(var i = 1; i <= 20; i++){		
+		insertX = Math.floor((Math.random() * canvas.width) + 1);
 
+		if(insertX >= 150 && insertX < 230){			
+			blocks.push(new Block(insertX, insertY, 20, 30));								
+		}
+
+		else{
+			i--;
+		}
+	}
+}
+
+generateBlocks();
+
+function play(){
+	ctx.clearRect(0, 0, canvas.width, canvas.height);		
+	
 	if(!start){
 		ball.x = player.x + 35;
 		var updatePlayer = player.movement(keyboard);
 		drawBall(ball, "#00ff00");
 		drawPlayer(player, "blue");
-		drawBlock(block, "red");
-		startBall(keyboard);
+		startBall(keyboard);		
 		setTimeout(play, 7);
 	}else if(!pause){
 		var update = ball.moviment(player);
