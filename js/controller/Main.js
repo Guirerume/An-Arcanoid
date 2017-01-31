@@ -36,16 +36,16 @@ function generateBlocks(){
 	{
 		insertY = 150;
 	}
-		
+
 	for(var i = 1; i <= qty; i++){		
-		insertX += distance;
+		insertX += distance - 3;
 
 		if(insertX <= 550){		
 			blocks.push(new Block(insertX, insertY, 15, 25));						
 		}
 		else{
 			insertX = 0 + distance;
-			insertY += 30;
+			insertY += 25;
 			blocks.push(new Block(insertX, insertY, 15, 25));
 		}
 	}
