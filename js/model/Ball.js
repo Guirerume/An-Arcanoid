@@ -11,21 +11,23 @@ var Ball = function (x, y, height, width, speed) {
 	this.mod = 0;
 	this.direction = 1;
 
-	this.blockColision = function(block){
-		if(block.status){
-			if(this.x + this.width >= block.x ){
-				if(this.x <= block.x + block.width){
-					if(this.y <= block.y + block.height){
-						if(this.y + this.height >= block.y){
-							if(this.direction == 1){
-								this.diry = 1;
-							}else if(this.direction == 2){
-									this.dirx = -1;
-								}else if(this.direction == 3){
-										this.dirx = 1;
-									}else{
-										this.diry = -1;
-								}
+	this.blockColision = function(blocks){
+		for(var i = 0; i < blocks.length; i++){
+			if(blocks[i].status){
+				if(this.x + this.width >= blocks[i].x ){
+					if(this.x <= blocks[i].x + blocks[i].width){
+						if(this.y <= blocks[i].y + blocks[i].height){
+							if(this.y + this.height >= blocks[i].y){
+								if(this.direction == 1){
+									this.diry = 1;
+								}else if(this.direction == 2){
+										this.dirx = -1;
+									}else if(this.direction == 3){
+											this.dirx = 1;
+										}else{
+											this.diry = -1;
+									}
+							}
 						}
 					}
 				}
