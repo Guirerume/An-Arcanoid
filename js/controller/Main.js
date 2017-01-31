@@ -24,7 +24,8 @@ var startBall = function(keyboard) {
 
 function generateBlocks(){
 	var insertX = 0;
-	var x = 380;	
+	var x = 380;
+	var y = 120;
 	var insertY = canvas.height / 2 - y;
 	var distance = 45;
 	for(var i = 1; i <= 20; i++){		
