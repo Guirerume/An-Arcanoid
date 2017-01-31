@@ -6,6 +6,7 @@ var player = new Player(canvas.width /2 - 50, 370, 20, 100, 5);
 var blocks = new Array();
 var start = false;
 var pause = false;
+var testLevel = 1;
 
 var keyboard = {};
 eventKeyboard(keyboard);
@@ -24,18 +25,28 @@ var startBall = function(keyboard) {
 
 function generateBlocks(){
 	var insertX = 0;
-	var x = 380;
-	var y = 120;
-	var insertY = canvas.height / 2 - y;
-	var distance = 45;
-	for(var i = 1; i <= 20; i++){		
+	var qty = testLevel * 8;
+	var insertY = 0;
+	var distance = 35;
+
+	if(qty > 56){
+		insertY = 10;
+	}
+	else
+	{
+		insertY = 150;
+	}
+		
+	for(var i = 1; i <= qty; i++){		
 		insertX += distance;
 
-		if(insertX < 400){		
-			blocks.push(new Block(insertX, insertY, 20, 20));								
+		if(insertX <= 550){		
+			blocks.push(new Block(insertX, insertY, 15, 25));						
 		}
 		else{
-			blocks.push(new Block(insertX - x, insertY + 50, 20, 20));
+			insertX = 0 + distance;
+			insertY += 30;
+			blocks.push(new Block(insertX, insertY, 15, 25));
 		}
 	}
 }
