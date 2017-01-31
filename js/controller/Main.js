@@ -36,7 +36,7 @@ function play(){
 	}else if(!pause){
 		var update = ball.moviment(player);
 		var updatePlayer = player.movement(keyboard);
-		ball.blockColision(block);
+		ball.blockColision(blocks);
 		drawBall(ball, "#00ff00");
 		drawPlayer(player, "blue");
 		drawBlock(block, "red");
