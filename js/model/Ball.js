@@ -20,12 +20,16 @@ var Ball = function (x, y, height, width, speed) {
 							if(this.y + this.height >= blocks[i].y){
 								if(this.direction == 1){
 									this.diry = 1;
+									blocks[i].status = false;
 								}else if(this.direction == 2){
 										this.dirx = -1;
+										blocks[i].status = false;
 									}else if(this.direction == 3){
 											this.dirx = 1;
+											blocks[i].status = false;
 										}else{
 											this.diry = -1;
+											blocks[i].status = false;
 									}
 							}
 						}
