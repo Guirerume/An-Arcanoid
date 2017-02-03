@@ -29,7 +29,6 @@ function generateBlocks(){
 	var insertY = canvas.height / 2;
 	var distance = 35;
 	var toLeft = false;
-	var count = -1;
 
 	if(qty > 56){
 		insertY = 10;
@@ -39,28 +38,33 @@ function generateBlocks(){
 		insertY = 150;
 	}
 
-	for(var i = 0; i <= qty; i++){
+	for(var i = 0; i < qty; i++){
 		if (i == 0)
 		{
 			blocks.push(new Block(insertX, insertY, 15, 25));	
-			console.log(blocks);
+			
 		}
 		else
 		{
-			while(count < blocks.length)
-			{
+			
+			for(var count = 0; count <= i; count ++)
+			{					
 				console.log("entrei");
-				console.log(blocks[i].x);
-				if(blocks[count].x != blocks[i].x && blocks[count].y != blocks[i].y )
+				console.log(blocks[i-1].x);
+				console.log(blocks[count].x);
+				if(blocks[count].x != blocks[i-1].x && blocks[count].y != blocks[i-1].y)
 				{
 					blocks.push(new Block(insertX, insertY, 15, 25));
+					console.log(blocks[count].x);
+					console.log(blocks[i].x);
 				}
 				else{
-					insertX += distance - 3;
+					insertX += distance - 3;					
+					console.log("eae");
 				}
-			}
-			count = 0;
+			}				
 		}		
+		count = 0;				
 		
 
 		/*if(insertX <= 550){		
