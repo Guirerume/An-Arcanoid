@@ -38,43 +38,30 @@ function generateBlocks(){
 		insertY = 150;
 	}
 
-	for(var i = 0; i < qty; i++){
-		if (i == 0)
+	blocks.push(new Block(insertX, insertY, 15, 25));	
+	for(var count = 1; count < qty; count ++)
+	{					
+		console.log("entrei");
+		if(count == blocks.length)
 		{
-			blocks.push(new Block(insertX, insertY, 15, 25));	
-			
-		}
-		else
-		{
-			
-			for(var count = 1; count <= i; count ++)
-			{					
-				console.log("entrei");
-				
-				if(blocks[count].x != blocks[count-1].x && blocks[count].y == blocks[count-1].y)
-				{
-					blocks.push(new Block(insertX, insertY, 15, 25));
-					console.log("Diferente");
-					console.log(blocks[count].x);
-					console.log(blocks[i].x);
-				}
-				else if(count == i)
-				{
-					insertX += distance - 3;
-					blocks.push(new Block(insertX, insertY, 15, 25));
-					console.log("delete me");
-				}	
-				else{
-					insertX += distance - 3;					
-					console.log("eae");
-				}
-				console.log(blocks[count-1].x);
-				console.log(blocks[count].x);
-			}	
-			count = 1;				
+			insertX += distance - 3;
+			blocks.push(new Block(insertX, insertY, 15, 25));
+			console.log("delete me");
 		}	
-		console.log("primeiro laço");	
-					
+		else if(blocks[count].x != blocks[count-1].x && blocks[count].y == blocks[count-1].y)
+		{
+			blocks.push(new Block(insertX, insertY, 15, 25));
+			console.log("Diferente");
+			console.log(blocks[count].x);
+			console.log(blocks[i].x);
+		}				
+	    else{
+			insertX += distance - 3;					
+			console.log("eae");
+	   	}
+		console.log(blocks[count-1].x);
+		console.log(blocks[count].x);
+	}	
 		
 
 		/*if(insertX <= 550){		
@@ -85,7 +72,7 @@ function generateBlocks(){
 			insertY += 25;
 			blocks.push(new Block(insertX, insertY, 15, 25));
 		}*/
-	}
+	
 }
 
 generateBlocks();
