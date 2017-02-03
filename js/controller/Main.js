@@ -24,10 +24,12 @@ var startBall = function(keyboard) {
 };
 
 function generateBlocks(){
-	var insertX = 0;
+	var insertX = canvas.width / 2;
 	var qty = testLevel * 8;
-	var insertY = 0;
+	var insertY = canvas.height / 2;
 	var distance = 35;
+	var toLeft = false;
+	var count = -1;
 
 	if(qty > 56){
 		insertY = 10;
@@ -37,17 +39,38 @@ function generateBlocks(){
 		insertY = 150;
 	}
 
-	for(var i = 1; i <= qty; i++){		
-		insertX += distance - 3;
+	for(var i = 0; i <= qty; i++){
+		if (i == 0)
+		{
+			blocks.push(new Block(insertX, insertY, 15, 25));	
+			console.log(blocks);
+		}
+		else
+		{
+			while(count < blocks.length)
+			{
+				console.log("entrei");
+				console.log(blocks[i].x);
+				if(blocks[count].x != blocks[i].x && blocks[count].y != blocks[i].y )
+				{
+					blocks.push(new Block(insertX, insertY, 15, 25));
+				}
+				else{
+					insertX += distance - 3;
+				}
+			}
+			count = 0;
+		}		
+		
 
-		if(insertX <= 550){		
+		/*if(insertX <= 550){		
 			blocks.push(new Block(insertX, insertY, 15, 25));						
 		}
 		else{
 			insertX = 0 + distance;
 			insertY += 25;
 			blocks.push(new Block(insertX, insertY, 15, 25));
-		}
+		}*/
 	}
 }
 
