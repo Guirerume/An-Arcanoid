@@ -1,4 +1,4 @@
-var testLevel = 3;
+var testLevel = 15;
 
 var eventKeyboard = function (keyboard) {
 	document.addEventListener("keydown", function(e){
@@ -12,34 +12,30 @@ var eventKeyboard = function (keyboard) {
 
 var generateBlocks = function(blocks){
 	var insertX = 20;
-	var qty = testLevel * 8;
+	var qty = testLevel * 10;
 	var insertY = canvas.height / 2;
 	var distance = 30;
-
-	if(qty > 56){
-		insertY = 10;
-	}
-	else
-	{
-		insertY = 150;
-	}
+	var max = 580;
+	var tipsLines = 0;
 
 	blocks.push(new Block(insertX, insertY, 15, 25));	
 	for(var count = 1; count < qty; count ++)
 	{					
 		insertX += distance;
-		if(insertX >= 590)
+		if(insertX >= max)
 		{
 			insertY -= 20;
 			insertX = 20;
+			tipsLines += 20;
+			insertX += tipsLines;
+			max -= 20;
 			blocks.push(new Block(insertX, insertY, 15, 25));
 		}				
     	else
     	{
 			blocks.push(new Block(insertX, insertY, 15, 25));			
-   		}
-   		console.log(count);		
-	}	
+   		}   		
+	}
 };
 
 
