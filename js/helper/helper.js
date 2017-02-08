@@ -1,3 +1,4 @@
+var testLevel = 15;
 
 var eventKeyboard = function (keyboard) {
 	document.addEventListener("keydown", function(e){
@@ -10,22 +11,34 @@ var eventKeyboard = function (keyboard) {
 };
 
 var generateBlocks = function(blocks){
-	var insertX = 0;
-	var x = 380;
-	var y = 120;
-	var insertY = canvas.height / 2 - y;
-	var distance = 45;
-	for(var i = 1; i <= 20; i++){		
-		insertX += distance;
+	var insertX = 20;
+	var qty = testLevel * 10;
+	var insertY = canvas.height / 2;
+	var distance = 30;
+	var max = 580;
+	var tipsLines = 0;
 
-		if(insertX < 400){		
-			blocks.push(new Block(insertX, insertY, 20, 20));								
-		}
-		else{
-			blocks.push(new Block(insertX - x, insertY + 50, 20, 20));
-		}
+	blocks.push(new Block(insertX, insertY, 15, 25));	
+	for(var count = 1; count < qty; count ++)
+	{					
+		insertX += distance;
+		if(insertX >= max)
+		{
+			insertY -= 20;
+			insertX = 20;
+			tipsLines += 20;
+			insertX += tipsLines;
+			max -= 20;
+			blocks.push(new Block(insertX, insertY, 15, 25));
+		}				
+    	else
+    	{
+			blocks.push(new Block(insertX, insertY, 15, 25));			
+   		}   		
 	}
 };
+
+
 
 var startBall = function(keyboard) {
 	if(32 in keyboard && !start){
