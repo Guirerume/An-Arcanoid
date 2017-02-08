@@ -61,7 +61,7 @@ var Ball = function (x, y, height, width, speed) {
 	};
 
 	this.exceedUser = function(){
-		if(this.y + this.height - (this.height / 2) >= canvas.height){
+		if(this.y + (this.height / 2) >= canvas.height){
 			return true;
 		}
 		return false;
