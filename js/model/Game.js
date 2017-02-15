@@ -82,6 +82,7 @@ var Game = function(ball, player){
 		}		
 	};	
 
+
 	this.play = function(){
 		ctx.clearRect(0, 0, canvas.width, canvas.height);		
 		if(!start){
