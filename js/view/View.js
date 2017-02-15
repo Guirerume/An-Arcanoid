@@ -16,7 +16,6 @@ var drawBlock = function (block_array, color){
 		}
 	}	
 };
-
 var drawGameOver = function()
 {
 	ctx.fillText("GAME OVER YEAHHHH!!!!!",300,300);
