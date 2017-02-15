@@ -1,4 +1,3 @@
-
 var Player = function(x, y, height, width, speed)
 {
 	this.x = x;

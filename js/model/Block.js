@@ -1,4 +1,3 @@
-
 var Block = function(x, y, height, width)
 {
 	this.x = x;

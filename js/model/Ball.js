@@ -1,4 +1,3 @@
-
 var Ball = function (x, y, height, width, speed) {
 
 	this.x = x;
@@ -9,9 +8,10 @@ var Ball = function (x, y, height, width, speed) {
 	this.dirx = -1;
 	this.diry = -1;
 	this.mod = 0;
-	this.direction = 1;
+	this.direction = 1;	
 
 	this.blockColision = function(blocks){
+		var qty = 0;
 		for(var i = 0; i < blocks.length; i++){
 			if(blocks[i].status){
 				if(this.x + this.width >= blocks[i].x ){
@@ -35,7 +35,7 @@ var Ball = function (x, y, height, width, speed) {
 						}
 					}
 				}
-			}
+			}					
 		}
 	};
 
@@ -61,9 +61,9 @@ var Ball = function (x, y, height, width, speed) {
 	};
 
 	this.exceedUser = function(){
-		if(this.y + this.height - (this.height / 2) >= canvas.height){
+		if(this.y + (this.height / 2) >= canvas.height){
 			return true;
 		}
-		return false;
+		return false;		
 	};
 };
