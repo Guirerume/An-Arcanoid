@@ -11,6 +11,7 @@ var Ball = function (x, y, height, width, speed) {
 	this.direction = 1;	
 
 	this.blockColision = function(blocks){
+		var qty = 0;
 		for(var i = 0; i < blocks.length; i++){
 			if(blocks[i].status){
 				if(this.x + this.width >= blocks[i].x ){
@@ -34,7 +35,7 @@ var Ball = function (x, y, height, width, speed) {
 						}
 					}
 				}
-			}
+			}					
 		}
 	};
 

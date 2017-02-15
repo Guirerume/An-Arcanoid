@@ -21,3 +21,9 @@ var drawGameOver = function()
 {
 	ctx.fillText("GAME OVER YEAHHHH!!!!!",300,300);
 }
+
+var drawLevelComplete = function()
+{
+	ctx.fillStyle = "Green";
+	ctx.fillText("Level Complete!",300,300);
+}

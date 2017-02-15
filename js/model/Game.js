@@ -4,13 +4,14 @@ var Game = function(ball, player){
 	var start = false;
 	var pause = false;
 	var lose =	false;
+	var levelComplete = false;
 	var keyboard = {};
 	var blocks = new Array();
-	var testLevel = 15;
+	var testLevel = 9;
 
 	var generateBlocks = function(blocks){
 		var insertX = 20;
-		var qty = testLevel * 10;
+		var qty = testLevel * 9;
 		var insertY = canvas.height / 2;
 		var distance = 30;
 		var max = 580;
@@ -30,8 +31,20 @@ var Game = function(ball, player){
 				blocks.push(new Block(insertX, insertY, 15, 25));			
 	   		} 		
 		}
-	};
+	};	
 
+	var stageClear = function(){
+		var broken = 0;
+		for(var i = 0; i < blocks.length; i++){
+			if(blocks[i].status == false){
+			broken++;
+				if(broken == blocks.length){
+					levelComplete = true;
+					return levelComplete;
+				 }
+			}			
+		}
+	};
 	eventKeyboard(keyboard);
 	generateBlocks(blocks);
 
@@ -74,29 +87,34 @@ var Game = function(ball, player){
 		if(!start){
 			init();
 			startBall(keyboard);
-		}else if(start && !pause && !lose){
+		}else if(start && !pause && !lose && !levelComplete){
 			var update = this.ball.moviment(this.player);
 			var updatePlayer = this.player.movement(keyboard);
 			this.ball.blockColision(blocks);
 			drawBall(this.ball, "#00ff00");
 			drawPlayer(this.player, "blue");
 			drawBlock(blocks, "red");
+			stageClear();
 			restartGame(keyboard);
 			pauseGame(keyboard);
 			gameOver();
 			return 0;
-		}else if(start && pause && !lose){
+		}else if(start && pause && !lose && !levelComplete){
 			drawBall(this.ball, "#00ff00");
 			drawPlayer(this.player, "blue");
 			drawBlock(blocks, "red");
 			restartGame(keyboard);
 			pauseGame(keyboard);
-		}else if(lose){
+		}else if(lose && !levelComplete){
 			gameOver();
 			drawGameOver();
 			drawBall(this.ball, "#00ff00");
 			drawPlayer(this.player, "blue");
 			drawBlock(blocks, "red");	
+		}else if(levelComplete){
+			drawLevelComplete();
+			drawBall(this.ball, "#00ff00");
+			drawPlayer(this.player, "blue");
 		}
 	};
 };
