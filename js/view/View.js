@@ -17,13 +17,16 @@ var drawBlock = function (block_array, color){
 	}	
 };
 
-var drawGameOver = function()
-{
-	ctx.fillText("GAME OVER YEAHHHH!!!!!",300,300);
+var drawGameOver = function(){
+	ctx.fillText("GAME OVER YEAHHHH!!!!!", 300, 300);
 }
 
-var drawLevelComplete = function()
-{
+var drawLevelComplete = function(){
 	ctx.fillStyle = "Green";
-	ctx.fillText("Level Complete!",300,300);
+	ctx.fillText("Level Complete!", 300, 300);
+}
+
+var drawScore = function(score){
+	ctx.fillStyle = "Black";
+	ctx.fillText("Score:" + score.score, score.x, score.y);
 }
